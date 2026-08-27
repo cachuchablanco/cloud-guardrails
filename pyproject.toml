@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cloud-guardrails"
+version = "0.1.0"
+description = "Scan Terraform fixtures for common cloud misconfigurations and map them to CIS AWS Foundations."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "NeanderthalV" }]
+keywords = ["cloud", "terraform", "cis", "misconfiguration", "security"]
+dependencies = [
+    "python-hcl2>=8.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+cloud-guardrails = "cloud_guardrails.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cloud_guardrails = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+addopts = "-q"
