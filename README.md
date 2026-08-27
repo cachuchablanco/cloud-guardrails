@@ -10,6 +10,21 @@ Not a production CSPM. Local files only. It never calls cloud APIs.
 
 Cloud security interviews keep coming back to the same handful of Terraform mistakes. This repo packages those checks in a few hundred lines of Python a recruiter can clone, run, and read in about twenty minutes. `fixtures/insecure/` is the planted mess; `fixtures/secure/` is the same shape hardened.
 
+
+## If you ask me on a call
+
+I would run `cloud-guardrails scan fixtures/insecure` and read the table. Public S3, SSH open to the world, `*:*` IAM, unencrypted disks. Those are the questions cloud interviews actually ask.
+
+What I would say next:
+
+- This is not Checkov. Checkov exists. This is a readable subset so I can explain each check
+- Local fixtures only. No AWS keys, no live account, no exploit
+- Exit code 1 on FAIL is on purpose. You can drop it in CI. The insecure fixture is tested so CI does not go red for the planted mess
+- If they ask why not tfsec: same answer. I wanted file:line evidence I wrote myself
+
+If they open `rules.py`, I can walk S3 public access, security groups, and why IMDS `optional` is still a fail.
+
+
 ## Architecture
 
 ```
