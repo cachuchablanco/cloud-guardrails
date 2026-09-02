@@ -1,4 +1,7 @@
 # Cloud Guardrails
+![CI](https://github.com/cachuchablanco/cloud-guardrails/actions/workflows/ci.yml/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 
 A small **Terraform misconfiguration scanner**: parse in-repo `.tf` fixtures, run CIS-mapped checks, and print a **fail/warn/pass** table plus `out/findings.json`.
 
